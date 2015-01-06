@@ -1,0 +1,59 @@
+<html>
+<head>
+	<script type="text/javascript" src='/static/jquery-2.1.3.min.js'></script>
+	<title>Grocery Ads</title>
+	<style>
+	body {
+		min-width: 40rem;
+	}
+	ul {margin: 0;
+		padding: 0;
+		list-style-type: none;
+		width: 100%;
+	}
+	li{
+		float: left;		
+	}
+	a{
+		display: block;
+		width: 10rem;
+		text-align: center;
+		font-size: 2rem;
+	}
+	section {
+		display: block;
+		width: 100%;
+	}
+	img {
+		width: 100%;
+	}
+	</style>
+</head>
+<body>
+	<ul>
+		{% for store in stores %}
+		<li><a onclick=test('{{store}}')>{{store}}</a></li>
+		{% endfor %}
+	</ul>
+	<section>
+
+	</section>
+
+</body>
+<script>
+	function test(text){
+		$.getJSON("/stores/"+text, function(data){
+			// alert(data);
+			images = [];
+			$.each(data, function(key, val){
+				images.push('<img src="' + val + '">')
+			});
+			$("section").find("article.flyers").remove();
+			$("<article/>", {
+				"class": "flyers",
+				html: images.join("")	
+			}).appendTo( "section" );
+		});
+	}
+</script>
+</html>
