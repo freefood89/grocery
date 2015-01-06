@@ -36,6 +36,8 @@ def get_times_flyers(url = 'http://www.timessupermarkets.com/2013/01/01/our-loca
 if __name__ == '__main__':
 	print('Service Started')
 
+	# get_times_flyers()
+
 	stores = json.load(open('timesAds.json'))
 	new_stores = []
 	for store in stores:
