@@ -48,7 +48,9 @@
 			$.each(data, function(key, val){
 				images.push('<img src="' + val + '">')
 			});
+			$("section").find("article.flyers").remove();
 			$("<article/>", {
+				"class": "flyers",
 				html: images.join("")	
 			}).appendTo( "section" );
 		});
